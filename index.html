@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be My Galentine 💗</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #fde2f3, #e0f7fa, #fff3b0);
+  background-size: 300% 300%;
+  animation: gradientMove 8s ease infinite;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  padding: 40px 20px;
+  max-width: 750px;
+  margin: auto;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  color: #9d4edd;
+  margin-top: 70px;
+}
+
+h2 {
+  font-weight: 400;
+  color: #ff6b9d;
+  margin-bottom: 30px;
+}
+
+button {
+  padding: 12px 32px;
+  font-size: 17px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 10px;
+  font-family: 'Poppins', sans-serif;
+  transition: 0.3s ease;
+}
+
+#yesBtn {
+  background: #ff8fab;
+  color: white;
+  box-shadow: 0 8px 20px rgba(255,143,171,0.3);
+}
+
+#yesBtn:hover { transform: translateY(-3px); }
+
+#noBtn {
+  background: #b8c0ff;
+  color: white;
+}
+
+/* Envelope */
+#envelope {
+  display: none;
+  margin-top: 50px;
+  font-size: 80px;
+  cursor: pointer;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+#openText {
+  display: none;
+  color: #9d4edd;
+  margin-top: 10px;
+}
+
+/* Letter Card */
+#letter {
+  display: none;
+  background: white;
+  margin-top: 30px;
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  text-align: left;
+  line-height: 1.9;
+  font-size: 16px;
+  color: #444;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+#letter h3 {
+  font-family: 'Playfair Display', serif;
+  color: #9d4edd;
+  margin-bottom: 20px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Floating Emojis */
+.float {
+  position: fixed;
+  bottom: -10px;
+  font-size: 18px;
+  animation: floatUp 10s linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 26px; }
+  #letter { font-size: 14px; padding: 20px; }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Okay miss… would you like to be my Galentine? 💗🎀🧿</h1>
+<h2>Saying no might be slightly difficult 😏✨</h2>
+
+<button id="yesBtn" onclick="showEnvelope()">Yes obviously 💖</button>
+<button id="noBtn" onclick="moveNo()">No 🙈</button>
+
+<div id="envelope" onclick="openLetter()">💌</div>
+<div id="openText">Click the letter, cutie ✨</div>
+
+<div id="letter">
+<h3>An Open Letter 💌✨</h3>
+
+Okay cutie… happy Galentine’s Day first of all 💗🧿  
+
+It’s honestly crazy how randomly our friendship started  
+and now you’ve become such a constant part of my daily life, sweetu 🌸  
+
+From random chats to serious discussions,  
+from laughing at nonsense to planning growth —  
+everything just feels balanced with you, Vedu 🤍✨  
+
+You support without competing,  
+guide without judging,  
+and give clarity when I’m confused 🎀  
+
+I genuinely admire your calm confidence and clear mindset.  
+Not everyone carries that kind of strength so naturally 💕  
+
+Our friendship feels safe, real, and growth-oriented —  
+and that’s rare 🧿✨  
+
+So yes, this is me officially appreciating you today 💗  
+Stay exactly the same sorted, supportive, and special girl you are, cutie 🎀  
+
+Happy Galentine’s Day 💖✨  
+</div>
+
+</div>
+
+<script>
+
+function showEnvelope() {
+  document.getElementById("yesBtn").style.display = "none";
+  document.getElementById("noBtn").style.display = "none";
+  document.getElementById("envelope").style.display = "block";
+  document.getElementById("openText").style.display = "block";
+}
+
+function openLetter() {
+  document.getElementById("envelope").style.display = "none";
+  document.getElementById("openText").style.display = "none";
+  document.getElementById("letter").style.display = "block";
+}
+
+function moveNo() {
+  let noBtn = document.getElementById("noBtn");
+  noBtn.style.position = "absolute";
+  noBtn.style.top = Math.random() * window.innerHeight + "px";
+  noBtn.style.left = Math.random() * window.innerWidth + "px";
+}
+
+/* Floating Emojis */
+setInterval(() => {
+  let float = document.createElement("div");
+  float.classList.add("float");
+
+  let emojis = ["💗","🎀","🧿","✨","🌸"];
+  float.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
+
+  float.style.left = Math.random() * 100 + "vw";
+  float.style.fontSize = (16 + Math.random()*14) + "px";
+
+  document.body.appendChild(float);
+
+  setTimeout(() => {
+    float.remove();
+  }, 10000);
+
+}, 900);
+
+</script>
+
+</body>
+</html>
